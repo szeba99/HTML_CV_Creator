@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    
+</head>
+<body>
+
+
+
+
+    <div id="options">
+
+        <input type="button" value="Save PDF" onclick="SavePDF()">
+        <input type="button" value="Editor Off" onclick="EditorOff()">
+        <input type="button" value="Editor On" onclick="EditorOn()">
+
+        <br>
+        <span>colour: </span><input type="color" value="#8000ff" id="colour" onchange="SetColour()">
+        <input type="button" value="Set" onclick="SetColour()">
+
+        <br>
+        Home: <input type="text" id="home_text" onchange="Home()"> <br>
+        Phone: <input type="text" id="phone_text" onchange="Phone()"> <br>
+        Mail: <input type="text" id="mail_text" onchange="Mail()"> <br>
+        Education: <input type="text" id="education_text" onchange="Education()"> <br>
+        Languages: <input type="text" id="language_text" onchange="Languages()"> <br>
+        <br>
+        Rövid leírás: <br>
+        <textarea onchange="IntroChange()" id="intro_custom_text">PROFIL: Horvát Pista vagyok, pályakezdő matematikus. Érdeklődési köreim közé tartozik a makettépítés, utcai golfozás és a szemétszedés. Egyik főbb célom, hogy sikereket érjek el szakmámban. 
+        </textarea>
+        <br>
+        Surname: <input type="text" id="surname_text" onchange="SurnameChange()"> <br>
+        First name: <input type="text" id="first_name_text" onchange="FirstNameChange()"> <br>
+    </div>
+    
+
+
+
+
+
+    <input type="file" id="imgupload" style="display:none" onchange="document.getElementById('profilepic_img').src = window.URL.createObjectURL(this.files[0])"/>
+
+    <div id="cv">
+        <div id="profilepic">
+            <img src="profilepic.jpg" id="profilepic_img" onclick="getElementById('imgupload').click();">
+        </div>
+
+        <div id="name">
+            <span id="surname">Horvát</span> <span id="first_name">Pista</span>
+        </div>
+
+        <div id="intro2"></div>
+        <div id="intro">
+            <span id="intro_text">
+                PROFIL: Horvát Pista vagyok, pályakezdő matematikus. Érdeklődési köreim közé tartozik
+                a makettépítés, utcai golfozás és a szemétszedés. Egyik főbb célom, hogy sikereket érjek el 
+                szakmámban.
+            </span>
+        </div>
+        
+
+        <div id="main_frame">
+                <!-- Create the editor container -->
+<div id="editor">
+
+            <span id="Education">
+               <h1>Tanulmányok </h1>
+               <ul>
+                <li>2019-2021 - Petőfi István Általános Iskola</li>
+                <li>2021-2025 - Petrovics Alexander Középiskola</li>
+               </ul>
+            </span>
+            <span id="Experience">
+                <h1>Tapasztalat</h1>
+                <ul>
+                    <li>2019-2021 - Petőfi István Általános Iskola</li>
+                    <li>2021-2025 - Petrovics Alexander Középiskola</li>
+                </ul>
+            </span>
+            <span id="Skills">
+                <h1>Készségek</h1>
+            </span>
+            <ul>
+                <li>Jó kommunikációs készség</li>
+                <li>Monotonitás-tűrés</li>
+            </ul>
+            <span id="Hobby">
+                <h1>Hobbi</h1>
+            </span>
+        </div>
+    </div>
+        <div id="decorfooter"></div>
+
+        <div id="panel_decor">
+
+        </div>
+
+        <div id="panel_info">
+            <div id="location">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="395.71px" height="395.71px" viewBox="0 0 395.71 395.71" style="enable-background:new 0 0 395.71 395.71;"
+	 xml:space="preserve">
+<g>
+	<path fill="currentColor" d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738
+		c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388
+		C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191
+		c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+                </svg>
+                <br>
+                <span id="infotext" class="home">Budapest, Hintapalinta utca 15</span>
+            </div>
+
+            <div id="telefon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+                    <defs>
+                    </defs>
+                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                        <path fill="currentColor" d="M 38.789 51.211 l 10.876 10.876 c 0.974 0.974 2.471 1.194 3.684 0.543 l 13.034 -6.997 c 0.964 -0.518 2.129 -0.493 3.07 0.066 l 19.017 11.285 c 1.357 0.805 1.903 2.489 1.268 3.933 c -1.625 3.698 -4.583 10.476 -5.758 13.473 c -0.247 0.631 -0.615 1.209 -1.127 1.652 c -12.674 10.986 -37.89 -2.4 -57.191 -21.701 C 6.358 45.039 -7.028 19.823 3.958 7.149 c 0.444 -0.512 1.022 -0.88 1.652 -1.127 c 2.996 -1.175 9.775 -4.133 13.473 -5.758 c 1.444 -0.635 3.128 -0.089 3.933 1.268 l 11.285 19.017 c 0.558 0.941 0.583 2.106 0.066 3.07 L 27.37 36.651 c -0.651 1.213 -0.431 2.71 0.543 3.684 C 27.913 40.335 38.789 51.211 38.789 51.211 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill="currentColor"; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path fill="currentColor" d="M 90 49.5 h -9 C 81 27.168 62.832 9 40.5 9 V 0 C 67.794 0 90 22.206 90 49.5 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill="currentColor" fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                        <path fill="currentColor" d="M 72.5 49.5 h -9 c 0 -12.682 -10.317 -23 -23 -23 v -9 C 58.145 17.5 72.5 31.855 72.5 49.5 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill="currentColor"; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    </g>
+                </svg>
+                <br>
+                <span id="infotext" class="home">+36/30-296-1234</span>
+            </div>
+
+            <div id="email">
+                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 88.86"><title>email</title><path fill="currentColor" d="M7.05,0H115.83a7.07,7.07,0,0,1,7,7.05V81.81a7,7,0,0,1-1.22,4,2.78,2.78,0,0,1-.66,1,2.62,2.62,0,0,1-.66.46,7,7,0,0,1-4.51,1.65H7.05a7.07,7.07,0,0,1-7-7V7.05A7.07,7.07,0,0,1,7.05,0Zm-.3,78.84L43.53,40.62,6.75,9.54v69.3ZM49.07,45.39,9.77,83.45h103L75.22,45.39l-11,9.21h0a2.7,2.7,0,0,1-3.45,0L49.07,45.39Zm31.6-4.84,35.46,38.6V9.2L80.67,40.55ZM10.21,5.41,62.39,47.7,112.27,5.41Z"/></svg>
+                <br>
+                <span id="infotext" class="mail">Pista@PusztaMail.hu</span>
+            </div>
+
+            <div id="education">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+<g><path fill="currentColor" d="M969.6,312.4L535.2,162.6c-27.1-9.9-21.4-9.9-48.3-0.2L50.1,311c-26.8,9.7-26.8,25.7,0.4,35.4l103.8,35.4c-46,44.7-49,91.3-49.6,145.1c-17.8,6.8-30.4,24.1-30.4,44.4c0,18.7,10.6,34.7,26,42.6C93,668.6,72,731.1,10,805.1c30.5,23.7,46.3,31.8,70.2,39.7c86.6-37.4,76-136.3,69.3-235c11.9-8.6,19.6-22.6,19.6-38.6c0-17.1-9-32-22.3-40.2c1.6-52.8,12.9-100.1,52.3-130.6c0.4-0.7,1.3-1.6,2.9-2.2l62.7,21.4l225.8,76.9c27.1,9.9,21.4,9.9,48.3,0.2l430.9-148.6C996.9,338.1,996.7,322.1,969.6,312.4L969.6,312.4L969.6,312.4z"/><path fill="currentColor" d="M539,566.9c-26.9,9.7-21.2,9.7-48.3-0.2l-225.8-76.9l-55.9-19v213.9l0,0l0,0v2.5l0,0c3.8,60.7,143.9,109.6,316,109.6c172.1,0,312.2-48.9,316-109.6l0,0V462.8L539,566.9z"/></g>
+                </svg>
+                <br>
+                <span id="infotext" class="education">Érettségi</span>
+            </div>
+
+            <div id="language">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="200.000000pt" height="200.000000pt" viewBox="0 0 200.000000 200.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path fill="currentColor" d="M733 1685 c-59 -25 -73 -64 -73 -197 l0 -118 334 0 334 0 33 -27 c54
+-46 59 -70 59 -303 l0 -210 43 0 c41 0 46 -4 162 -120 66 -66 125 -120 132
+-120 24 0 33 39 33 139 l0 101 65 0 c60 0 68 3 103 34 l37 34 3 354 c2 340 2
+354 -18 386 -39 63 -31 62 -652 62 -461 -1 -569 -3 -595 -15z"/>
+<path fill="currentColor" d="M42 1256 l-37 -34 -3 -351 c-2 -304 -1 -355 13 -381 24 -47 70 -70
+138 -70 l57 0 0 -109 c0 -82 3 -111 14 -120 21 -18 37 -6 161 118 l110 111
+368 0 c407 0 420 2 457 62 19 31 20 50 20 374 0 338 0 341 -23 375 -12 18 -34
+39 -47 46 -19 10 -162 13 -608 13 l-582 0 -38 -34z"/>
+</g>
+                </svg>
+
+                <br>
+                <span id="infotext" class="languages">Angol - B2</span>
+            </div>
+            
+        </div>
+
+        
+
+    </div>
+
+    
+
+
+    
+</body>
+</html>
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+
+<script>
+    var toolbarOptions = [
+  ['bold', 'italic', 'underline', { 'align': [] }],        // toggled buttons
+             // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [{ 'size': [] }],  // custom dropdown
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var quill = new Quill('#editor', {
+  modules: {
+    toolbar: toolbarOptions
+  },
+  theme: 'snow'
+});
+
+    function EditorOff() 
+    {
+        quill.enable(false);
+        document.getElementsByClassName("ql-toolbar")[0].style.display = "none";
+    }
+
+    function EditorOn() 
+    {
+        quill.enable(true);
+        document.getElementsByClassName("ql-toolbar")[0].style.display = "block";
+    }
+
+
+
+    var doc = new jsPDF();
+
+    function SavePDF(data) 
+    {
+
+        EditorOff();
+    
+      var mywindow = window.open('', 'new div', 'height=1240,width=874');
+      mywindow.document.write('<html><head><title></title>');
+      mywindow.document.write('<link rel="stylesheet" href="style.css" type="text/css" media="all"/>');
+      mywindow.document.write('</head><body >');
+      mywindow.document.write(document.getElementById("cv").innerHTML);
+      mywindow.document.write('</body></html>');
+      mywindow.document.close();
+      mywindow.focus();
+      setTimeout(function(){ mywindow.print(); mywindow.close(); },2000);
+
+      return true;
+}
+
+
+function SetColour()
+{
+    colour = document.getElementById("colour").value;
+
+    document.getElementById("intro").style.backgroundColor = colour;
+    document.getElementById("panel_decor").style.backgroundColor = colour;
+    document.getElementById("panel_decor").style.backgroundImage = `linear-gradient(black,${colour},${colour})`
+    document.getElementById("decorfooter").style.backgroundColor = colour;
+    var allSVG = document.getElementsByTagName("svg");
+
+    for (let index = 0; index < allSVG.length; index++) {
+        const element = allSVG[index];
+       element.style.color = colour;
+    }
+
+}
+
+
+
+
+
+    function ChangeImage() 
+    {
+        document.getElementById("profilepic_img").src = document.getElementById("imgupload").value;
+    }
+
+    function Home()
+    {
+        document.getElementsByClassName("home")[0].innerHTML = document.getElementById("home_text").value
+    }
+
+    function Phone()
+    {
+        document.getElementsByClassName("phone")[0].innerHTML = document.getElementById("phone_text").value;
+    }
+
+    function Mail()
+    {
+        document.getElementsByClassName("mail")[0].innerHTML = document.getElementById("mail_text").value;
+    }
+
+    function Education()
+    {
+        document.getElementsByClassName("education")[0].innerHTML = document.getElementById("education_text").value;
+    }
+
+    function Languages()
+    {
+        document.getElementsByClassName("languages")[0].innerHTML = document.getElementById("language_text").value;
+    }
+
+    function IntroChange()
+    {
+        document.getElementById("intro_text").innerHTML = document.getElementById("intro_custom_text").value;
+    }
+
+    function FirstNameChange()
+    {
+        document.getElementById("first_name").innerHTML = document.getElementById("first_name_text").value;
+    }
+
+    function SurnameChange()
+    {
+        document.getElementById("surname").innerHTML = document.getElementById("surname_text").value;
+    }
+
+</script>
